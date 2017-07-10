@@ -1,57 +1,66 @@
-angular.module('starter')
-.config( function($stateProvider, $urlRouterProvider){
+(function(){
+  "use strict";
 
-  $stateProvider
+  angular.module('starter')
+  .config( initializeRoutes);
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+  initializeRoutes.$inject=['$stateProvider', '$urlRouterProvider'];
 
-  // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
+ function initializeRoutes($stateProvider, $urlRouterProvider){
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+   $stateProvider
 
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
+     .state('tab', {
+     url: '/tab',
+     abstract: true,
+     templateUrl: 'templates/tabs.html'
+   })
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+   // Each tab has its own nav history stack:
 
-});
+   .state('tab.dash', {
+     url: '/dash',
+     views: {
+       'tab-dash': {
+         templateUrl: 'templates/tab-dash.html',
+         
+       }
+     }
+   })
+
+   .state('tab.chats', {
+       url: '/chats',
+       views: {
+         'tab-chats': {
+           templateUrl: 'templates/tab-chats.html',
+
+         }
+       }
+     })
+     .state('tab.chat-detail', {
+       url: '/chats/:chatId',
+       views: {
+         'tab-chats': {
+           templateUrl: 'templates/chat-detail.html',
+
+         }
+       }
+     })
+
+   .state('tab.account', {
+     url: '/account',
+     views: {
+       'tab-account': {
+         templateUrl: 'templates/tab-account.html',
+
+       }
+     }
+   });
+
+   // if none of the above states are matched, use this as the fallback
+   $urlRouterProvider.otherwise('/tab/dash');
+
+ }
+
+})();
