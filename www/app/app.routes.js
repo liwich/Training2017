@@ -11,20 +11,18 @@
 
    $stateProvider
 
-     .state('tab', {
+    .state('tab', {
      url: '/tab',
      abstract: true,
      templateUrl: 'templates/tabs.html'
    })
-
-   // Each tab has its own nav history stack:
 
    .state('tab.dash', {
      url: '/dash',
      views: {
        'tab-dash': {
          templateUrl: 'templates/tab-dash.html',
-         
+
        }
      }
    })
